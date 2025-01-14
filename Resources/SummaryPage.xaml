@@ -1,0 +1,34 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FitnessTracker"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             x:Class="FitnessTracker.SummaryPage">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Step History"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <!-- Chart -->
+        <sf:SfCartesianChart>
+            <sf:SfCartesianChart.BindingContext>
+                <local:StepHVModel />
+            </sf:SfCartesianChart.BindingContext>
+
+            <sf:SfCartesianChart.XAxes>
+                <sf:CategoryAxis />
+            </sf:SfCartesianChart.XAxes>
+
+            <sf:SfCartesianChart.YAxes>
+                <sf:NumericalAxis />
+            </sf:SfCartesianChart.YAxes>
+
+            <sf:SfCartesianChart.Series>
+                <sf:ColumnSeries ItemsSource="{Binding StepData}"
+                         XBindingPath="Date"
+                         YBindingPath="Steps" />
+            </sf:SfCartesianChart.Series>
+        </sf:SfCartesianChart>
+
+    </VerticalStackLayout>
+</ContentPage>
